@@ -256,8 +256,12 @@ class Markdown extends ControllerAbstract {
 	/**
 	 * Register CSS style files.
 	 */
-	public function admin_enqueue_styles( $hook_suffix ) {
+	public function admin_enqueue_styles( $hook ) {
+	    $page_array = array("edit.php","post.php","post-new.php");
+	    if (in_array($hook,$page_array)) {
 		wp_enqueue_style( 'editmd', $this->githuber_plugin_url . '/assets/vendor/editor.md/css/editormd.min.css', array(), $this->editormd_varsion, 'all' );
+		}
+		return;
 	}
 
 	/**
